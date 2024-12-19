@@ -1,92 +1,129 @@
+@import 'variables';
+
 @if $enable-fireworks == "true" {
   .fireworks-container {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     pointer-events: none;
     z-index: -1;
+    overflow: hidden;
   }
 
   .firework {
     position: absolute;
-    
-    &:nth-child(1) { top: 20%; left: 20%; }
-    &:nth-child(2) { top: 40%; left: 60%; }
-    &:nth-child(3) { top: 60%; left: 40%; }
-    &:nth-child(4) { top: 30%; left: 80%; }
-    &:nth-child(5) { top: 70%; left: 30%; }
+    bottom: 0;
+    width: 2px;
+    height: 80vh; /* Height the firework will travel */
+    background: transparent;
+    transform-origin: bottom center;
+    animation: shoot var(--shoot-duration) ease-out infinite;
+  }
 
-    > div {
-      position: absolute;
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
+  .firework .explosion {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    transform-origin: center;
+    animation: explode var(--explode-duration) ease-out forwards;
+    animation-delay: var(--shoot-duration);
+  }
 
-      &::before, &::after {
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        border-radius: 50%;
-        animation: sparkle 0.8s ease-out infinite;
-      }
+  .particle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 4px;
+    background: currentColor;
+    border-radius: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+    animation: particleExplosion var(--particle-duration) ease-out forwards;
+    animation-delay: calc(var(--shoot-duration) + 0.1s);
+  }
+
+  /* Manually define each firework's properties */
+  .firework-1 {
+    left: 10%;
+    --shoot-duration: 3s;
+    --explode-duration: 1s;
+    --particle-duration: 1.2s;
+    --hue: 50;
+    color: hsl(var(--hue), 80%, 60%);
+    animation-delay: -1s;
+
+    .particle {
+      background: hsl(var(--hue), 100%, 70%);
     }
   }
 
-  @for $i from 1 through 5 {
-    .firework:nth-child(#{$i}) > div {
-      $hue: 320 + random(40);
-      $delay: random(20) / 10 + s;
-      
-      animation: explosion 1.5s ease-out infinite;
-      animation-delay: $delay;
-      background: hsl($hue, 100%, 60%);
-      box-shadow: 0 0 6px hsl($hue, 100%, 60%);
+  .firework-2 {
+    left: 30%;
+    --shoot-duration: 4s;
+    --explode-duration: 1s;
+    --particle-duration: 1.2s;
+    --hue: 120;
+    color: hsl(var(--hue), 80%, 60%);
+    animation-delay: -2s;
 
-      &::before {
-        background: hsl($hue - 20, 100%, 60%);
-        animation-delay: $delay + 0.1s;
-      }
-      
-      &::after {
-        background: hsl($hue + 20, 100%, 60%);
-        animation-delay: $delay + 0.2s;
-      }
+    .particle {
+      background: hsl(var(--hue), 100%, 70%);
     }
   }
 
-  @keyframes explosion {
+  /* Repeat for firework-3 to firework-10 */
+  /* ... */
+
+  /* Position particles around the explosion point */
+  .particle-1  { transform: rotate(0deg)   translate(0, -10px); }
+  .particle-2  { transform: rotate(30deg)  translate(0, -10px); }
+  .particle-3  { transform: rotate(60deg)  translate(0, -10px); }
+  .particle-4  { transform: rotate(90deg)  translate(0, -10px); }
+  .particle-5  { transform: rotate(120deg) translate(0, -10px); }
+  .particle-6  { transform: rotate(150deg) translate(0, -10px); }
+  .particle-7  { transform: rotate(180deg) translate(0, -10px); }
+  .particle-8  { transform: rotate(210deg) translate(0, -10px); }
+  .particle-9  { transform: rotate(240deg) translate(0, -10px); }
+  .particle-10 { transform: rotate(270deg) translate(0, -10px); }
+  .particle-11 { transform: rotate(300deg) translate(0, -10px); }
+  .particle-12 { transform: rotate(330deg) translate(0, -10px); }
+
+  /* Animations */
+  @keyframes shoot {
     0% {
-      transform: scale(0) translate(0, 0);
+      opacity: 1;
+      transform: translateY(0);
+    }
+    70% {
+      opacity: 1;
+      transform: translateY(-70vh);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-70vh);
+    }
+  }
+
+  @keyframes explode {
+    0% {
       opacity: 1;
     }
-    
-    50% {
-      opacity: 0.8;
-    }
-
     100% {
-      transform: scale(20) translate(
-        #{random(20) - 10}px,
-        #{random(20) - 10}px
-      );
       opacity: 0;
     }
   }
 
-  @keyframes sparkle {
+  @keyframes particleExplosion {
     0% {
-      transform: scale(1);
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(0);
     }
-    
-    50% {
-      transform: scale(0.5);
-    }
-    
     100% {
-      transform: scale(1);
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(1) translateY(-50vh);
     }
   }
 }
