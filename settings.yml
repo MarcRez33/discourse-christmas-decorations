@@ -2,6 +2,10 @@ enable_lights:
   default: true
   description: "Enable lights?"
 
+sticky_lights:
+  default: false
+  description: "Stick the lights to the header when scrolling?"
+
 enable_hats:
   default: true
   description: "Show hat on avatars?"
@@ -21,3 +25,4 @@ enable_fireworks:
 enable_fireworks_follow_screen:
   default: true
   description: "Should fireworks follow the screen on scroll?"
+
