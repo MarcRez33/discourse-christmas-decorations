@@ -21,6 +21,15 @@
   $snow-white: rgba(255, 250, 250, 1);       // Soft white
   $candy-red: rgba(255, 30, 30, 1);          // Candy cane red
 
+  // First, let's add these color transitions to the existing variables section
+  $christmas-colors: (
+    $christmas-red,
+    $christmas-green,
+    $warm-gold,
+    $snow-white,
+    $candy-red
+  );
+
   .lightrope {
     text-align: center;
     white-space: nowrap;
@@ -48,30 +57,30 @@
       background: $christmas-red;
       box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread $christmas-red;
       animation-name: flash-1;
-      animation-duration: 1.5s;
+      animation-duration: 4s;
       &:nth-child(2n+1) {
         background: $christmas-green;
         box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread $christmas-green;
         animation-name: flash-2;
-        animation-duration: 2s;
+        animation-duration: 4.5s;
       }
       &:nth-child(3n+1) {
         background: $warm-gold;
         box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread $warm-gold;
         animation-name: flash-3;
-        animation-duration: 2.5s;
+        animation-duration: 5s;
       }
       &:nth-child(4n+2) {
         background: $snow-white;
         box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread $snow-white;
         animation-name: flash-4;
-        animation-duration: 1.8s;
+        animation-duration: 5.5s;
       }
       &:nth-child(5n+1) {
         background: $candy-red;
         box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread $candy-red;
         animation-name: flash-5;
-        animation-duration: 2.2s;
+        animation-duration: 6s;
       }
       &:before {
         content: "";
@@ -102,34 +111,114 @@
     }
   }
   @keyframes flash-1 {
-      0%, 100% { background: $christmas-red;
-      box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread $christmas-red;}
-      50% { background: rgba(255, 0, 0, $light-off-opacity);
-      box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread rgba(255, 0, 0, 0.2);}
+      0% { 
+        background: nth($christmas-colors, 1);
+        box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread nth($christmas-colors, 1);
+      }
+      25% {
+        background: nth($christmas-colors, 2);
+        box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread nth($christmas-colors, 2);
+      }
+      50% {
+        background: nth($christmas-colors, 3);
+        box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread nth($christmas-colors, 3);
+      }
+      75% {
+        background: nth($christmas-colors, 4);
+        box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread nth($christmas-colors, 4);
+      }
+      100% {
+        background: nth($christmas-colors, 1);
+        box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread nth($christmas-colors, 1);
+      }
   }
   @keyframes flash-2 {
-      0%, 100% { background: $christmas-green;
-      box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread $christmas-green;}
-      50% { background: rgba(34, 139, 34, $light-off-opacity);
-      box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread rgba(34, 139, 34, 0.2);}
+      0% { 
+        background: nth($christmas-colors, 2);
+        box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread nth($christmas-colors, 2);
+      }
+      25% {
+        background: nth($christmas-colors, 3);
+        box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread nth($christmas-colors, 3);
+      }
+      50% {
+        background: nth($christmas-colors, 4);
+        box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread nth($christmas-colors, 4);
+      }
+      75% {
+        background: nth($christmas-colors, 5);
+        box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread nth($christmas-colors, 5);
+      }
+      100% {
+        background: nth($christmas-colors, 2);
+        box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread nth($christmas-colors, 2);
+      }
   }
   @keyframes flash-3 {
-      0%, 100% { background: $warm-gold;
-      box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread $warm-gold;}
-      50% { background: rgba(255, 215, 0, $light-off-opacity);
-      box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread rgba(255, 215, 0, 0.2);}
+      0% { 
+        background: nth($christmas-colors, 3);
+        box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread nth($christmas-colors, 3);
+      }
+      25% {
+        background: nth($christmas-colors, 4);
+        box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread nth($christmas-colors, 4);
+      }
+      50% {
+        background: nth($christmas-colors, 5);
+        box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread nth($christmas-colors, 5);
+      }
+      75% {
+        background: nth($christmas-colors, 1);
+        box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread nth($christmas-colors, 1);
+      }
+      100% {
+        background: nth($christmas-colors, 3);
+        box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread nth($christmas-colors, 3);
+      }
   }
   @keyframes flash-4 {
-      0%, 100% { background: $snow-white;
-      box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread $snow-white;}
-      50% { background: rgba(255, 250, 250, $light-off-opacity);
-      box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread rgba(255, 250, 250, 0.2);}
+      0% { 
+        background: nth($christmas-colors, 4);
+        box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread nth($christmas-colors, 4);
+      }
+      25% {
+        background: nth($christmas-colors, 5);
+        box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread nth($christmas-colors, 5);
+      }
+      50% {
+        background: nth($christmas-colors, 1);
+        box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread nth($christmas-colors, 1);
+      }
+      75% {
+        background: nth($christmas-colors, 2);
+        box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread nth($christmas-colors, 2);
+      }
+      100% {
+        background: nth($christmas-colors, 4);
+        box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread nth($christmas-colors, 4);
+      }
   }
   @keyframes flash-5 {
-      0%, 100% { background: $candy-red;
-      box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread $candy-red;}
-      50% { background: rgba(255, 30, 30, $light-off-opacity);
-      box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread rgba(255, 30, 30, 0.2);}
+      0% { 
+        background: nth($christmas-colors, 5);
+        box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread nth($christmas-colors, 5);
+      }
+      25% {
+        background: nth($christmas-colors, 1);
+        box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread nth($christmas-colors, 1);
+      }
+      50% {
+        background: nth($christmas-colors, 2);
+        box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread nth($christmas-colors, 2);
+      }
+      75% {
+        background: nth($christmas-colors, 3);
+        box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread nth($christmas-colors, 3);
+      }
+      100% {
+        background: nth($christmas-colors, 5);
+        box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread nth($christmas-colors, 5);
+      }
   }
 
   /* more space for lights */
