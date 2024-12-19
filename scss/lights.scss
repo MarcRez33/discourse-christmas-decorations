@@ -115,15 +115,15 @@
         background: nth($christmas-colors, 1);
         box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread nth($christmas-colors, 1);
       }
-      25% {
-        background: nth($christmas-colors, 2);
-        box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread nth($christmas-colors, 2);
-      }
-      50% {
+      15% {
         background: nth($christmas-colors, 3);
         box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread nth($christmas-colors, 3);
       }
-      75% {
+      45% {
+        background: nth($christmas-colors, 2);
+        box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread nth($christmas-colors, 2);
+      }
+      85% {
         background: nth($christmas-colors, 4);
         box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread nth($christmas-colors, 4);
       }
@@ -137,17 +137,17 @@
         background: nth($christmas-colors, 2);
         box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread nth($christmas-colors, 2);
       }
-      25% {
-        background: nth($christmas-colors, 3);
-        box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread nth($christmas-colors, 3);
-      }
-      50% {
-        background: nth($christmas-colors, 4);
-        box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread nth($christmas-colors, 4);
-      }
-      75% {
+      30% {
         background: nth($christmas-colors, 5);
         box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread nth($christmas-colors, 5);
+      }
+      65% {
+        background: nth($christmas-colors, 1);
+        box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread nth($christmas-colors, 1);
+      }
+      90% {
+        background: nth($christmas-colors, 3);
+        box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread nth($christmas-colors, 3);
       }
       100% {
         background: nth($christmas-colors, 2);
