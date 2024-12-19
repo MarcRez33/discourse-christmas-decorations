@@ -1,53 +1,92 @@
 @if $enable-fireworks == "true" {
-  .firework {
+  .fireworks-container {
     position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     pointer-events: none;
     z-index: -1;
-    opacity: 0.6;
   }
 
-  .firework > div {
+  .firework {
     position: absolute;
-    width: 3px;
-    height: 3px;
-    border-radius: 50%;
-    animation: fireworks 2s ease-out infinite;
-  }
+    
+    &:nth-child(1) { top: 20%; left: 20%; }
+    &:nth-child(2) { top: 40%; left: 60%; }
+    &:nth-child(3) { top: 60%; left: 40%; }
+    &:nth-child(4) { top: 30%; left: 80%; }
+    &:nth-child(5) { top: 70%; left: 30%; }
 
-  @for $i from 1 through 5 {
-    .firework:nth-child(#{$i}) {
-      $delay: random(20) / 10 + s;
-      $duration: (random(20) / 10 + 1.5) + s;
-      $size: random(20) + px;
-      
-      left: #{random(100)}vw;
-      top: #{random(50)}vh;
-      
-      > div {
-        animation-delay: $delay;
-        animation-duration: $duration;
-        background: hsl(random(360), 70%, 50%);
-        transform: scale($size);
+    > div {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+
+      &::before, &::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        animation: sparkle 0.8s ease-out infinite;
       }
     }
   }
 
-  @keyframes fireworks {
+  @for $i from 1 through 5 {
+    .firework:nth-child(#{$i}) > div {
+      $hue: 320 + random(40);
+      $delay: random(20) / 10 + s;
+      
+      animation: explosion 1.5s ease-out infinite;
+      animation-delay: $delay;
+      background: hsl($hue, 100%, 60%);
+      box-shadow: 0 0 6px hsl($hue, 100%, 60%);
+
+      &::before {
+        background: hsl($hue - 20, 100%, 60%);
+        animation-delay: $delay + 0.1s;
+      }
+      
+      &::after {
+        background: hsl($hue + 20, 100%, 60%);
+        animation-delay: $delay + 0.2s;
+      }
+    }
+  }
+
+  @keyframes explosion {
     0% {
-      transform: translate(0, 0);
+      transform: scale(0) translate(0, 0);
       opacity: 1;
     }
     
     50% {
-      opacity: 0.5;
+      opacity: 0.8;
     }
 
     100% {
-      transform: translate(
-        #{random(100) - 50}px,
-        #{random(100) - 50}px
+      transform: scale(20) translate(
+        #{random(20) - 10}px,
+        #{random(20) - 10}px
       );
       opacity: 0;
+    }
+  }
+
+  @keyframes sparkle {
+    0% {
+      transform: scale(1);
+    }
+    
+    50% {
+      transform: scale(0.5);
+    }
+    
+    100% {
+      transform: scale(1);
     }
   }
 }
