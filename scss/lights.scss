@@ -64,31 +64,31 @@
       border-radius: 50%;
       margin: $globe-spacing/2;
       display: inline-block;
-      background: $christmas-red;
-      box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread $christmas-red;
+      background: nth($christmas-colors, 1);
+      box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread nth($christmas-colors, 1);
       animation-name: flash-1;
       animation-duration: 4s;
       &:nth-child(2n+1) {
-        background: $christmas-green;
-        box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread $christmas-green;
+        background: nth($christmas-colors, 2);
+        box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread nth($christmas-colors, 2);
         animation-name: flash-2;
         animation-duration: 4.5s;
       }
       &:nth-child(3n+1) {
-        background: $warm-gold;
-        box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread $warm-gold;
+        background: nth($christmas-colors, 3);
+        box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread nth($christmas-colors, 3);
         animation-name: flash-3;
         animation-duration: 5s;
       }
       &:nth-child(4n+2) {
-        background: $snow-white;
-        box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread $snow-white;
+        background: nth($christmas-colors, 4);
+        box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread nth($christmas-colors, 4);
         animation-name: flash-4;
         animation-duration: 5.5s;
       }
       &:nth-child(5n+1) {
-        background: $candy-red;
-        box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread $candy-red;
+        background: nth($christmas-colors, 5);
+        box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread nth($christmas-colors, 5);
         animation-name: flash-5;
         animation-duration: 6s;
       }
