@@ -15,19 +15,29 @@
   $speed: 0.7;
 
   // Updated Christmas-themed colors
-  $christmas-red: rgba(255, 0, 0, 1);        // Classic Christmas red
-  $christmas-green: rgba(34, 139, 34, 1);    // Forest green
-  $warm-gold: rgba(255, 215, 0, 1);          // Warm yellow/gold
-  $snow-white: rgba(255, 250, 250, 1);       // Soft white
-  $candy-red: rgba(255, 30, 30, 1);          // Candy cane red
+  $christmas-red: rgba(255, 0, 0, 1);          // Classic Christmas red
+  $christmas-green: rgba(34, 139, 34, 1);      // Forest green
+  $warm-gold: rgba(255, 215, 0, 1);            // Warm yellow/gold
+  $snow-white: rgba(255, 250, 250, 1);         // Soft white
+  $candy-red: rgba(255, 30, 30, 1);            // Candy cane red
+  $emerald: rgba(0, 163, 0, 1);                // Deep emerald green
+  $berry-red: rgba(153, 0, 0, 1);              // Deep berry red
+  $silver: rgba(192, 192, 192, 1);             // Metallic silver
+  $pine-green: rgba(1, 68, 33, 1);             // Pine tree green
+  $royal-purple: rgba(120, 81, 169, 1);        // Royal purple (found in some ornaments)
 
-  // First, let's add these color transitions to the existing variables section
+  // Update the color list
   $christmas-colors: (
     $christmas-red,
     $christmas-green,
     $warm-gold,
     $snow-white,
-    $candy-red
+    $candy-red,
+    $emerald,
+    $berry-red,
+    $silver,
+    $pine-green,
+    $royal-purple
   );
 
   .lightrope {
