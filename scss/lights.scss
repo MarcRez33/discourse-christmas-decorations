@@ -45,18 +45,29 @@
     white-space: nowrap;
     overflow: hidden;
     position: absolute;
-    z-index: 1;
-    @if $enable-lights-sticky == "true" {
-      position: fixed;
-      top: 0;
-      z-index: 1000;
-    }
     left: 0;
-
     margin: -40px 0 0 0;
     padding: 0;
     pointer-events: none;
     width: 100%;
+    
+    &.lightrope-sticky {
+      display: none;
+      @if $enable-lights-sticky == "true" {
+        display: block;
+        position: fixed;
+        top: 0;
+        z-index: 1000;
+      }
+    }
+    
+    &.lightrope-normal {
+      display: block;
+      @if $enable-lights-sticky == "true" {
+        display: none;
+      }
+    }
+    
     li {
       position: relative;
       animation-fill-mode: both;
