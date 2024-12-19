@@ -44,18 +44,10 @@
     text-align: center;
     white-space: nowrap;
     overflow: hidden;
-
-    @if $sticky_lights {
-      position: fixed;
-      top: 0;
-      margin: 0;
-    } @else {
-      position: absolute;
-      margin: -40px 0 0 0;
-    }
-
+    position: absolute;
     left: 0;
     z-index: 1;
+    margin: -40px 0 0 0;
     padding: 0;
     pointer-events: none;
     width: 100%;
