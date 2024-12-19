@@ -16,4 +16,4 @@ decoration_invert_color:
 
 enable_fireworks:
   default: true
-  description: "Show subtle fireworks animation in background?"
+  description: "Show fireworks?"

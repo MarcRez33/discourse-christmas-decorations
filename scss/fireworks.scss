@@ -1,125 +1,135 @@
-@import 'variables';
+/* Fireworks
+  Copyright (c) 2020 by Eddie Lin (https://codepen.io/yshlin/pen/ylDEk)
+  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+  The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+*/
 
-@if $enable-fireworks == "true" {
-  .fireworks-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: -1;
-    overflow: hidden;
+$particles: 50;
+$width: 500;
+$height: 500;
+
+// Create the explosion...
+$box-shadow: ();
+$box-shadow2: ();
+
+@for $i from 0 through $particles {
+  $box-shadow: $box-shadow,
+               random($width)-$width / 2 + px
+               random($height)-$height / 1.2 + px
+               hsl(random(360), 100, 50);
+  $box-shadow2: $box-shadow2, 0 0 #fff
+}
+
+@mixin keyframes ($animationName) {
+  @-webkit-keyframes #{$animationName} {
+    @content;
   }
 
-  .firework {
-    position: absolute;
-    bottom: 0;
-    width: 2px;
-    height: 80vh;
-    background: transparent;
-    transform-origin: bottom center;
+  @-moz-keyframes #{$animationName} {
+    @content;
   }
 
-  // Individual firework styles
-  .firework-1 {
-    left: 10%;
-    --shoot-duration: 3s;
-    --explode-duration: 1s;
-    --particle-duration: 1.2s;
-    --hue: 50;
-    color: hsl(var(--hue), 80%, 60%);
-    animation: shoot var(--shoot-duration) ease-out infinite;
-    animation-delay: -1s;
+  @-o-keyframes #{$animationName} {
+    @content;
   }
 
-  .firework-2 {
+  @-ms-keyframes #{$animationName} {
+    @content;
+  }
+
+  @keyframes #{$animationName} {
+    @content;
+  }
+}
+
+@mixin animation-delay ($settings) {
+  -moz-animation-delay: $settings;
+  -webkit-animation-delay: $settings;
+  -o-animation-delay: $settings;
+  -ms-animation-delay: $settings;
+  animation-delay: $settings;
+}
+
+@mixin animation-duration ($settings) {
+  -moz-animation-duration: $settings;
+  -webkit-animation-duration: $settings;
+  -o-animation-duration: $settings;
+  -ms-animation-duration: $settings;
+  animation-duration: $settings;
+}
+
+@mixin animation ($settings) {
+  -moz-animation: $settings;
+  -webkit-animation: $settings;
+  -o-animation: $settings;
+  -ms-animation: $settings;
+  animation: $settings;
+}
+
+@mixin transform ($settings) {
+  transform: $settings;
+  -moz-transform: $settings;
+  -webkit-transform: $settings;
+  -o-transform: $settings;
+  -ms-transform: $settings;
+}
+
+.fireworks {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.fireworks > .before, .fireworks > .after {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  box-shadow: $box-shadow2;
+  @include animation((3s bang ease-out infinite backwards, 3s gravity ease-in infinite backwards, 10s position linear infinite backwards));
+}
+    
+.fireworks > .after {
+  @include animation-delay((1.25s, 1.25s, 1.25s));
+  @include animation-duration((1.25s, 1.25s, 6.25s));
+}
+        
+@include keyframes(bang) {
+  to {
+    box-shadow:$box-shadow;
+  }
+}
+    
+@include keyframes(gravity)  {
+  to {
+    @include transform(translateY(200px));
+    opacity: 0;
+  }
+}
+    
+@include keyframes(position) {
+  0%, 19.9% {
+    top: 15%;
+    left: 40%;
+  }
+  20%, 39.9% {
+    top: 15%;
     left: 30%;
-    --shoot-duration: 4s;
-    --explode-duration: 1s;
-    --particle-duration: 1.2s;
-    --hue: 120;
-    color: hsl(var(--hue), 80%, 60%);
-    animation: shoot var(--shoot-duration) ease-out infinite;
-    animation-delay: -2s;
   }
-
-  // Add more .firework-N classes with different properties as needed
-
-  // Explosion and particles
-  .firework .explosion {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 0;
-    opacity: 0;
-    transform-origin: center;
-    animation: explode var(--explode-duration) ease-out forwards;
-    animation-delay: var(--shoot-duration);
+  40%, 59.9% {  
+    top: 15%;
+    left: 70%;
   }
-
-  .particle {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 4px;
-    height: 4px;
-    background: currentColor;
-    border-radius: 50%;
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0);
-    animation: particleExplosion var(--particle-duration) ease-out forwards;
-    animation-delay: calc(var(--shoot-duration) + 0.1s);
+  60%, 79.9% {  
+    top: 15%;
+    left: 20%;
   }
-
-  // Position particles around the explosion point
-  .particle-1  { transform: rotate(0deg)   translate(0, -10px); }
-  .particle-2  { transform: rotate(30deg)  translate(0, -10px); }
-  .particle-3  { transform: rotate(60deg)  translate(0, -10px); }
-  .particle-4  { transform: rotate(90deg)  translate(0, -10px); }
-  .particle-5  { transform: rotate(120deg) translate(0, -10px); }
-  .particle-6  { transform: rotate(150deg) translate(0, -10px); }
-  .particle-7  { transform: rotate(180deg) translate(0, -10px); }
-  .particle-8  { transform: rotate(210deg) translate(0, -10px); }
-  .particle-9  { transform: rotate(240deg) translate(0, -10px); }
-  .particle-10 { transform: rotate(270deg) translate(0, -10px); }
-  .particle-11 { transform: rotate(300deg) translate(0, -10px); }
-  .particle-12 { transform: rotate(330deg) translate(0, -10px); }
-
-  // Animations
-  @keyframes shoot {
-    0% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    70% {
-      opacity: 1;
-      transform: translateY(-70vh);
-    }
-    100% {
-      opacity: 0;
-      transform: translateY(-70vh);
-    }
-  }
-
-  @keyframes explode {
-    0% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-    }
-  }
-
-  @keyframes particleExplosion {
-    0% {
-      opacity: 1;
-      transform: translate(-50%, -50%) scale(0);
-    }
-    100% {
-      opacity: 0;
-      transform: translate(-50%, -50%) scale(1);
-    }
+  80%, 99.9% {  
+    top: 15%;
+    left: 80%;
   }
 }
