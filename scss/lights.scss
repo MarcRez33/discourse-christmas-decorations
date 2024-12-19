@@ -14,12 +14,12 @@
   $light-off-opacity: 0.4;
   $speed: 0.7;
 
-  // Define our festive colors
-  $red-light: rgba(255, 39, 39, 1);
-  $green-light: rgba(0, 255, 85, 1);
-  $blue-light: rgba(0, 183, 255, 1);
-  $gold-light: rgba(255, 196, 0, 1);
-  $purple-light: rgba(199, 0, 255, 1);
+  // Updated Christmas-themed colors
+  $christmas-red: rgba(255, 0, 0, 1);        // Classic Christmas red
+  $christmas-green: rgba(34, 139, 34, 1);    // Forest green
+  $warm-gold: rgba(255, 215, 0, 1);          // Warm yellow/gold
+  $snow-white: rgba(255, 250, 250, 1);       // Soft white
+  $candy-red: rgba(255, 30, 30, 1);          // Candy cane red
 
   .lightrope {
     text-align: center;
@@ -45,33 +45,33 @@
       border-radius: 50%;
       margin: $globe-spacing/2;
       display: inline-block;
-      background: $red-light;
-      box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread $red-light;
+      background: $christmas-red;
+      box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread $christmas-red;
       animation-name: flash-1;
-      animation-duration: 2s;
+      animation-duration: 1.5s;
       &:nth-child(2n+1) {
-        background: $green-light;
-        box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread $green-light;
+        background: $christmas-green;
+        box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread $christmas-green;
         animation-name: flash-2;
-        animation-duration: 0.5s;
+        animation-duration: 2s;
       }
       &:nth-child(3n+1) {
-        background: $blue-light;
-        box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread $blue-light;
+        background: $warm-gold;
+        box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread $warm-gold;
         animation-name: flash-3;
-        animation-duration: 1.5s / $speed;
+        animation-duration: 2.5s;
       }
       &:nth-child(4n+2) {
-        background: $gold-light;
-        box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread $gold-light;
+        background: $snow-white;
+        box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread $snow-white;
         animation-name: flash-4;
-        animation-duration: 1.8s / $speed;
+        animation-duration: 1.8s;
       }
       &:nth-child(5n+1) {
-        background: $purple-light;
-        box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread $purple-light;
+        background: $candy-red;
+        box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread $candy-red;
         animation-name: flash-5;
-        animation-duration: 2.1s / $speed;
+        animation-duration: 2.2s;
       }
       &:before {
         content: "";
@@ -102,34 +102,34 @@
     }
   }
   @keyframes flash-1 {
-      0%, 100% { background: $red-light;
-      box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread $red-light;}
-      50% { background: rgba(255, 39, 39, $light-off-opacity);
-      box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread rgba(255, 39, 39, 0.2);}
+      0%, 100% { background: $christmas-red;
+      box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread $christmas-red;}
+      50% { background: rgba(255, 0, 0, $light-off-opacity);
+      box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread rgba(255, 0, 0, 0.2);}
   }
   @keyframes flash-2 {
-      0%, 100% { background: $green-light;
-      box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread $green-light;}
-      50% { background: rgba(0, 255, 85, $light-off-opacity);
-      box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread rgba(0, 255, 85, 0.2);}
+      0%, 100% { background: $christmas-green;
+      box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread $christmas-green;}
+      50% { background: rgba(34, 139, 34, $light-off-opacity);
+      box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread rgba(34, 139, 34, 0.2);}
   }
   @keyframes flash-3 {
-      0%, 100% { background: $blue-light;
-      box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread $blue-light;}
-      50% { background: rgba(0, 183, 255, $light-off-opacity);
-      box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread rgba(0, 183, 255, 0.2);}
+      0%, 100% { background: $warm-gold;
+      box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread $warm-gold;}
+      50% { background: rgba(255, 215, 0, $light-off-opacity);
+      box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread rgba(255, 215, 0, 0.2);}
   }
   @keyframes flash-4 {
-      0%, 100% { background: $gold-light;
-      box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread $gold-light;}
-      50% { background: rgba(255, 196, 0, $light-off-opacity);
-      box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread rgba(255, 196, 0, 0.2);}
+      0%, 100% { background: $snow-white;
+      box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread $snow-white;}
+      50% { background: rgba(255, 250, 250, $light-off-opacity);
+      box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread rgba(255, 250, 250, 0.2);}
   }
   @keyframes flash-5 {
-      0%, 100% { background: $purple-light;
-      box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread $purple-light;}
-      50% { background: rgba(199, 0, 255, $light-off-opacity);
-      box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread rgba(199, 0, 255, 0.2);}
+      0%, 100% { background: $candy-red;
+      box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread $candy-red;}
+      50% { background: rgba(255, 30, 30, $light-off-opacity);
+      box-shadow: 0px $globe-height/6 $globe-width*2 $globe-spread rgba(255, 30, 30, 0.2);}
   }
 
   /* more space for lights */
