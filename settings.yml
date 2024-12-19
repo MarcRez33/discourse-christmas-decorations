@@ -21,3 +21,7 @@ enable_fireworks:
 enable_fireworks_follow_screen:
   default: true
   description: "Should fireworks follow the screen on scroll?"
+
+enable_lights_sticky:
+  default: false
+  description: "Make lights stick to the top of the page?"
