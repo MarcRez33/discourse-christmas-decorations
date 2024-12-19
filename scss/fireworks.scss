@@ -3,30 +3,123 @@
 @if $enable-fireworks == "true" {
   .fireworks-container {
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     pointer-events: none;
     z-index: -1;
     overflow: hidden;
+  }
 
-    /* Create multiple fireworks using ::before and ::after */
-    @for $i from 1 through 10 {
-      &::nth-child(#{$i}) {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: random(100) * 1%;
-        width: 2px;
-        height: 80vh;
-        background: transparent;
-        transform-origin: bottom center;
-        animation: shoot #{random(3) + 2}s ease-out infinite;
-        animation-delay: #{random(5) * -1}s;
-        /* Additional styles */
-      }
+  .firework {
+    position: absolute;
+    bottom: 0;
+    width: 2px;
+    height: 80vh;
+    background: transparent;
+    transform-origin: bottom center;
+  }
+
+  // Individual firework styles
+  .firework-1 {
+    left: 10%;
+    --shoot-duration: 3s;
+    --explode-duration: 1s;
+    --particle-duration: 1.2s;
+    --hue: 50;
+    color: hsl(var(--hue), 80%, 60%);
+    animation: shoot var(--shoot-duration) ease-out infinite;
+    animation-delay: -1s;
+  }
+
+  .firework-2 {
+    left: 30%;
+    --shoot-duration: 4s;
+    --explode-duration: 1s;
+    --particle-duration: 1.2s;
+    --hue: 120;
+    color: hsl(var(--hue), 80%, 60%);
+    animation: shoot var(--shoot-duration) ease-out infinite;
+    animation-delay: -2s;
+  }
+
+  // Add more .firework-N classes with different properties as needed
+
+  // Explosion and particles
+  .firework .explosion {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    transform-origin: center;
+    animation: explode var(--explode-duration) ease-out forwards;
+    animation-delay: var(--shoot-duration);
+  }
+
+  .particle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 4px;
+    background: currentColor;
+    border-radius: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+    animation: particleExplosion var(--particle-duration) ease-out forwards;
+    animation-delay: calc(var(--shoot-duration) + 0.1s);
+  }
+
+  // Position particles around the explosion point
+  .particle-1  { transform: rotate(0deg)   translate(0, -10px); }
+  .particle-2  { transform: rotate(30deg)  translate(0, -10px); }
+  .particle-3  { transform: rotate(60deg)  translate(0, -10px); }
+  .particle-4  { transform: rotate(90deg)  translate(0, -10px); }
+  .particle-5  { transform: rotate(120deg) translate(0, -10px); }
+  .particle-6  { transform: rotate(150deg) translate(0, -10px); }
+  .particle-7  { transform: rotate(180deg) translate(0, -10px); }
+  .particle-8  { transform: rotate(210deg) translate(0, -10px); }
+  .particle-9  { transform: rotate(240deg) translate(0, -10px); }
+  .particle-10 { transform: rotate(270deg) translate(0, -10px); }
+  .particle-11 { transform: rotate(300deg) translate(0, -10px); }
+  .particle-12 { transform: rotate(330deg) translate(0, -10px); }
+
+  // Animations
+  @keyframes shoot {
+    0% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    70% {
+      opacity: 1;
+      transform: translateY(-70vh);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-70vh);
     }
   }
 
-  /* Pseudo-elements may have limitations; this is a conceptual example */
+  @keyframes explode {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
 
-  /* Animations remain the same */
+  @keyframes particleExplosion {
+    0% {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(0);
+    }
+    100% {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
 }
