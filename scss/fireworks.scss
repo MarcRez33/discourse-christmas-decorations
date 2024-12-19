@@ -1,0 +1,53 @@
+@if $enable-fireworks == "true" {
+  .firework {
+    position: fixed;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.6;
+  }
+
+  .firework > div {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    animation: fireworks 2s ease-out infinite;
+  }
+
+  @for $i from 1 through 5 {
+    .firework:nth-child(#{$i}) {
+      $delay: random(20) / 10 + s;
+      $duration: (random(20) / 10 + 1.5) + s;
+      $size: random(20) + px;
+      
+      left: #{random(100)}vw;
+      top: #{random(50)}vh;
+      
+      > div {
+        animation-delay: $delay;
+        animation-duration: $duration;
+        background: hsl(random(360), 70%, 50%);
+        transform: scale($size);
+      }
+    }
+  }
+
+  @keyframes fireworks {
+    0% {
+      transform: translate(0, 0);
+      opacity: 1;
+    }
+    
+    50% {
+      opacity: 0.5;
+    }
+
+    100% {
+      transform: translate(
+        #{random(100) - 50}px,
+        #{random(100) - 50}px
+      );
+      opacity: 0;
+    }
+  }
+}

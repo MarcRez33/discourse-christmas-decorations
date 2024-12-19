@@ -13,3 +13,7 @@ enable_decoration_image:
 decoration_invert_color:
   default: false
   description: "Invert decoration image color? Enable this on dark theme."
+
+enable_fireworks:
+  default: true
+  description: "Show subtle fireworks animation in background?"
