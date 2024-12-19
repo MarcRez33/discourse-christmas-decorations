@@ -17,3 +17,7 @@ decoration_invert_color:
 enable_fireworks:
   default: true
   description: "Show fireworks?"
+
+enable_fireworks_follow_screen:
+  default: true
+  description: "Should fireworks follow the screen on scroll?"
